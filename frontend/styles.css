@@ -1,0 +1,103 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: #eceff1;  /* Light gray-blue background */
+    margin: 0;
+    padding: 0;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 50px auto;
+    background: #ffffff;  /* White background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);  /* Soft shadow effect */
+    border: 1px solid #ddd;
+    background: linear-gradient(to bottom right, #8e2de2, #4a00e0);  /* Colorful gradient */
+    color: white;
+}
+
+#chatbox {
+    height: 300px;
+    overflow-y: scroll;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.bot, .user {
+    margin: 10px;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.bot {
+    background: #80d4ff;  /* Light blue for bot messages */
+    max-width: 80%;
+    margin-left: 10px;
+    text-align: left;
+    border-radius: 20px 20px 0px 20px;  /* Rounded corners */
+}
+
+.user {
+    background: #ff8a80;  /* Light red for user messages */
+    max-width: 80%;
+    margin-right: 10px;
+    text-align: right;
+    border-radius: 20px 20px 20px 0px;  /* Rounded corners */
+}
+
+input {
+    width: 80%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s;
+}
+
+input:focus {
+    background-color: #fff5e1;  /* Light yellow when focused */
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    background: #ff4081;  /* Pink background */
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: #ff64b5;  /* Darker pink when hovered */
+}
+
+button:active {
+    background: #ff1744;  /* Redder pink when clicked */
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        width: 90%;
+    }
+
+    input {
+        width: 70%;
+    }
+
+    button {
+        width: 25%;
+    }
+}

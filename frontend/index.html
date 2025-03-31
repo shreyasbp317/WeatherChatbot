@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: #eceff1;  /* Light gray-blue background */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4a00e0;
+            margin-top: 50px;
+            font-size: 36px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 450px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            background: linear-gradient(to bottom right, #8e2de2, #4a00e0);  /* Colorful gradient */
+            color: white;
+        }
+
+        input {
+            width: 80%;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            outline: none;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s;
+        }
+
+        input:focus {
+            background-color: #fff5e1;  /* Light yellow when focused */
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            background: #ff4081;  /* Pink background */
+            color: white;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #ff64b5;  /* Darker pink when hovered */
+        }
+
+        button:active {
+            background: #ff1744;  /* Redder pink when clicked */
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .chat-container {
+                width: 90%;
+            }
+
+            input {
+                width: 70%;
+            }
+
+            button {
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Chatbot</h1>
+    <div class="chat-container">
+        <input type="text" id="userInput" placeholder="Type 'weather in Europe'">
+        <button onclick="sendMessage()">Get Weather</button>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userMessage = document.getElementById("userInput").value;
+            fetch("http://127.0.0.1:5001/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").innerText = data.reply;
+            })
+            .catch(error => {
+                document.getElementById("response").innerText = "Error connecting to the server.";
+                console.error("Error:", error);
+            });
+        }
+    </script>
+</body>
+</html>
